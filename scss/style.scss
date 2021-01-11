@@ -1,0 +1,463 @@
+@import 'normalize';
+
+// === Mixin ===
+@mixin font-lato {
+  font-family: 'Lato', sans-serif;
+}
+@mixin start-button {
+  @include font-lato;
+  cursor: pointer;
+  margin: 0;
+  padding: 13px 20px;
+  border: none;
+  background: linear-gradient(to right, orange, pink);
+  outline: none;
+  border-radius: 4px;
+  color: $color-white;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+// === /Mixin ===
+
+// === Variables ===
+$color-white: #ffffff;
+
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$screen-sm-max: 767px;
+$screen-md-max: 991px;
+$screen-lg-max: 1199px;
+// === /Variables ===
+
+// === Common ===
+* {
+  box-sizing: border-box;
+}
+body {
+  @include font-lato;
+  
+}
+.section-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.section-outer {
+padding-right: 20px;
+padding-left: 20px;
+}
+
+
+.btn-main {
+  @include start-button;
+  border: none;
+  background: linear-gradient(to right, orange,  rgb(233, 100, 122));
+  color: $color-white;
+  &:hover {
+    background: linear-gradient(to right,rgb(233, 100, 122), orange);
+  }
+}
+.btn-secondary {
+  @include start-button;
+  border: 1px solid #414141;
+  background: $color-white;
+  color: #414141;
+  transition: 0.2s;
+
+  &:hover {
+    color: rgb(233, 100, 122);
+    border-color: orange;
+  }
+}
+.btn-free {
+  @include start-button;
+  border: none;
+  background:$color-white;
+  color: #414141;
+
+  &:hover {
+    color: rgb(233, 100, 122);
+    border-color: orange;
+  }
+}
+// === /Common ===
+
+// === Header ===
+.section-header {
+  color: #ffffff;
+  background: url(https://eskipaper.com/images/forest-wallpaper-10.jpg) no-repeat 50% 50%;
+  background-size: cover;
+  position: relative;
+
+  .section-inner {
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
+
+&::before {
+  content: '';
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: .4);
+}
+  
+  &-logo{
+    font-weight: bold;
+    font-size: 24px;
+    flex-shrink: 1;
+    padding-top: 35px; 
+  }
+  &-content{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+  &-wrapper{
+    margin: 0 auto;
+    &__title{
+      text-align: center;
+      font-weight: bold;
+      font-size: 56px;
+      line-height: 60px;
+      margin-bottom: 16px;
+   }
+    &__subtitle{
+      text-align: center;
+      font-size: 18px;
+      line-height: 32px;
+      width: 80%;
+      margin: 0 auto 44px;
+    }
+    &__form{
+      display: flex;
+      &-input{
+      flex: 1;
+      padding-right: 40px;
+        input {
+          @include font-lato;
+          text-decoration: none;
+          width: 100%;
+          border: none;
+          background: rgba($color: #ffffff, $alpha: .25);
+          color: $color-white;
+          font-size: 16px;
+          margin: 0;
+          padding: 16px 20px;
+          outline: none;
+          border-radius: 4px;
+          transition: .2s;
+
+          &::placeholder{
+            color: $color-white;
+          }
+          &:focus {
+            background: rgba($color: #ffffff, $alpha: .5);
+          }
+        }
+      }
+     }
+  }
+
+}
+// === /Header ===
+
+// === Promo ===
+.section-promo {
+  padding: 120px 0;
+}
+.section-promo-1 {
+  display: flex;
+
+  &__content {
+    flex-basis: 50%;
+    
+  
+    .title{
+      font-size: 32px;
+      line-height: 51px;
+      font-weight: bold;
+      margin-bottom: 36px;
+    }
+    .subtitle{
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    .text{
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 300;
+      color: gray;
+      padding-top: 14px;
+    }
+  }
+  &__video {
+    flex-basis: 50%;
+    align-self: center;
+   
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  }
+// MEDIA section-promo-1 
+@media (max-width: $screen-sm-max) {
+  flex-direction: column;
+  &__video {
+    order: -1;
+    margin-bottom: 20px;
+  }
+  }
+@media (min-width: $screen-md){
+  &__content {
+    padding-right: 90px;
+  }
+}
+
+// /MEDIA section-promo-1 
+}
+.section-promo-2 {
+  display: flex;
+  padding-top: 86px;
+  margin-top: 120px;
+  border-top: 1px solid #e2e2e2;
+  text-align: center;
+  &__item{
+        .icon{
+      margin-bottom: 20px;
+     
+    }
+    .title{
+      margin-bottom: 14px;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: bold;
+    }
+    .content{
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 300;
+      color: gray;
+     
+    }
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+    }
+}
+
+// === /Promo ===
+
+// === Founder ===
+.section-founder {
+  background-color: #f6fafd;
+  padding: 20px 0;
+  .section-inner {
+    display: flex;
+    }
+  img {
+    align-self: flex-end;
+    height: 500px;
+    width: 400px;
+  }
+  &__content {
+    align-self: center;
+    padding-left: 50px;
+    &-text {
+      @include font-lato;
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: 300;
+      color: gray;
+    }
+    &-name { 
+      font-size: 20px;
+      line-height: 29px;
+      font-weight: bold;
+          }
+    &-post {
+      font-size: 24px;
+      line-height: 29px;
+      font-weight: 300;
+         }
+  }
+}
+// === /Founder ===
+
+// === Plans ===
+.section-plans {
+  padding: 120px 0;
+  text-align: center;
+  &__title {
+        font-size: 36px;
+      line-height: 51px;
+      font-weight: bold;
+  }
+  &__subtitle {
+        font-size: 16px;
+      line-height: 28px;
+      font-weight: 300;
+      width: 50%;
+      margin: 0 auto 80px;
+  }
+  &__list {
+    display: flex;
+    justify-content: center;
+   
+    &-item {
+      flex-basis: 370px;
+      padding: 60px 45px;
+      
+      &_title {
+        font-size: 14px;
+      line-height: 17px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+      }
+      &_price {
+        margin-bottom: 26px;
+        .prefix {
+      color: rgb(236, 105, 127);
+      font-size: 72px;
+      line-height: 86px;
+      font-weight: bold;
+        }
+        .postfix {
+          
+          font-size: 14px;
+          line-height: 17px;
+          font-weight: bold;
+        }
+      }
+      &_description {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 300;
+        margin-bottom: 50px;
+      }
+      &.active {
+        background-color: #f6fafd;
+      }
+     
+    }
+  }
+}
+// === /Plans ===
+// === Free ===
+.section-free {
+  text-align: center;
+  color: $color-white;
+  padding: 120px 0;
+  background: linear-gradient(to right, orange, rgb(233, 100, 122));
+  
+  &__title {
+    font-size: 55px;
+    line-height: 60px;
+    font-weight: bold;
+    margin-bottom: 26px;
+  }
+  &__description {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    
+    }
+// MEDIA section-free-1
+@media (min-width: $screen-md){
+  &__description {
+    width: 50%;
+  }
+}
+// /MEDIA section-free-1
+  }
+// === /Free ===
+
+// === Footer ===
+.section-footer {
+  padding: 80px 0;
+  &__logo {
+    text-align: center;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 75px;
+    padding: 0;
+    list-style: none;
+      li {
+        & + li {
+          margin-left: 60px;
+        }
+        a {
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: #000;
+          text-decoration: none;
+          transition: 0.2s;
+
+          &.active,
+          &:hover {
+            color: rgb(233, 100, 122);
+          }
+        }
+      }
+  }
+  &__copyright_and_links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 18px;
+    
+    
+  }
+  // MEDIA copyright_and_links 
+@media (min-width: $screen-md){
+  width: 60%;
+  margin: 0 auto;
+}
+
+// /MEDIA copyright_and_links
+}
+.helper-link {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  li {
+    & + li {
+      margin-left: 20px;
+    }
+    a {
+      color: gray;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+   }
+  }
+}
+// === /Footer ===
